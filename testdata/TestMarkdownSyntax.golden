@@ -1,4 +1,4 @@
-% github.com/pirmd/cli/style
+% github.com/pirmd/style
 % pirmd
 % 2019-07-09
 
@@ -9,7 +9,7 @@ This small piece of text aims at demonstrating and testing package 'style'.
 It is written by a __non-native__ English speaker, so pardon any faults.
 
 All details can be found in 
-[![GoDoc](https://godoc.org/github.com/pirmd/cli/style?status.svg)](https://godoc.org/github.com/pirmd/cli/style)
+[![GoDoc](https://godoc.org/github.com/pirmd/style?status.svg)](https://godoc.org/github.com/pirmd/style)
 
 # EXAMPLES OF AVAILABLE STYLES
 

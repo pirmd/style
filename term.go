@@ -1,7 +1,7 @@
 package style
 
 import (
-	"github.com/pirmd/cli/style/termsize"
+	"github.com/pirmd/style/termsize"
 )
 
 var (
