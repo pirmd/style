@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pirmd/cli/style/text"
+	"github.com/pirmd/text"
 )
 
 var (

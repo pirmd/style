@@ -1,4 +1,6 @@
 github.com/pirmd/cli v0.3.0 h1:OW0248GRk/79lePS3g+Wqpua3BziEKPagBZ/ta0uGmQ=
 github.com/pirmd/cli v0.3.0/go.mod h1:MCAlgqKKTt8c0KK9tggXepX6mqo0ztZm6t2R5nNbZKY=
+github.com/pirmd/text v0.0.0-20191111165610-e9760a07aba4 h1:87kHcyMn0OfUxocFbEUnac5XNhfJiG3RfEoAa/3OQJE=
+github.com/pirmd/text v0.0.0-20191111165610-e9760a07aba4/go.mod h1:FBNvItiLIoO/jhO8dO35YtMt0wxxuIPBZnDKPxKh75U=
 github.com/pirmd/verify v0.2.0 h1:woyyRGbgZp4SnWGsMco3BCVwTfomkFZl/+xRKiGZ5FM=
 github.com/pirmd/verify v0.2.0/go.mod h1:/McQWCtPnQ52qjQCYc0JKdwFyTxd5oRfwtCUq9m+eG0=
