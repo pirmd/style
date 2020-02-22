@@ -11,9 +11,9 @@ var (
 	_ Styler = (*TextSyntax)(nil) //Makes sure that TextSyntax implements Styler
 )
 
-//NewPlaintext is a pre-defined style.TextSyntax Styler to write plain text. It
-//allows for maximum 80 chars per line, indenting is made of 4 spaces and list
-//bullets are made of unicode hyphen and bullet.
+// NewPlaintext is a pre-defined style.TextSyntax Styler to write plain text. It
+// allows for maximum 80 chars per line, indenting is made of 4 spaces and list
+// bullets are made of unicode hyphen and bullet.
 func NewPlaintext() *TextSyntax {
 	return &TextSyntax{
 		TextWidth:   80,
@@ -22,9 +22,9 @@ func NewPlaintext() *TextSyntax {
 	}
 }
 
-//TextSyntax implements Styler interface to provide basic formatting to write plain
-//texts.  It supports text indenting and wraping as well as table but does not
-//provide color nor text emphasis supports.
+// TextSyntax implements Styler interface to provide basic formatting to write plain
+// texts.  It supports text indenting and wraping as well as table but does not
+// provide color nor text emphasis supports.
 type TextSyntax struct {
 	*CoreSyntax
 
@@ -52,9 +52,9 @@ type TextSyntax struct {
 	needLeadingBr bool
 }
 
-//Tab increases the tabulation level for the provided text.
-//Wraping is done according to stx.TextWidth value, if stx.TextWidth is null, Tab
-//only indents and doesn't wrap the provided text.
+// Tab increases the tabulation level for the provided text.
+// Wraping is done according to stx.TextWidth value, if stx.TextWidth is null, Tab
+// only indents and doesn't wrap the provided text.
 func (stx *TextSyntax) Tab() func(string) string {
 	stx.indentLvl++
 	return func(s string) string {
@@ -63,7 +63,7 @@ func (stx *TextSyntax) Tab() func(string) string {
 	}
 }
 
-//Header returns text as a chapter's header.
+// Header returns text as a chapter's header.
 func (stx *TextSyntax) Header(lvl int) func(s string) string {
 	switch {
 	case lvl <= 0:
@@ -75,14 +75,14 @@ func (stx *TextSyntax) Header(lvl int) func(s string) string {
 	}
 }
 
-//Paragraph returns text as a new paragraph
+// Paragraph returns text as a new paragraph
 func (stx *TextSyntax) Paragraph(s string) string {
 	return stx.br() + stx.tab(s, stx.indentLvl, "") + "\n"
 }
 
-//BulletedList returns a new bulleted-list (each list item has a leading
-//bullet).
-//It automatically indents each item.
+// BulletedList returns a new bulleted-list (each list item has a leading
+// bullet).
+// It automatically indents each item.
 func (stx *TextSyntax) BulletedList() func(items ...string) string {
 	stx.nestLvl++
 	stx.indentLvl++
@@ -108,9 +108,9 @@ func (stx *TextSyntax) BulletedList() func(items ...string) string {
 	}
 }
 
-//OrderedList returns a new ordered-list (each list item has a leading
-//auto-incrementing enumerator).
-//It automatically indents each item.
+// OrderedList returns a new ordered-list (each list item has a leading
+// auto-incrementing enumerator).
+// It automatically indents each item.
 func (stx *TextSyntax) OrderedList() func(items ...string) string {
 	stx.nestLvl++
 	stx.indentLvl++
@@ -136,20 +136,20 @@ func (stx *TextSyntax) OrderedList() func(items ...string) string {
 	}
 }
 
-//Define returns a term definition
+// Define returns a term definition
 func (stx *TextSyntax) Define(term string, desc string) string {
 	term = stx.tab(term, stx.indentLvl, "") + "\n"
 	desc = stx.tab(desc, stx.indentLvl+1, "") + "\n"
 	return stx.br() + term + desc
 }
 
-//Table draws a table out of the provided rows.
-//Table column width are guessed automatically and are arranged so that the table
-//fits into stx.TextWidth.
+// Table draws a table out of the provided rows.
+// Table column width are guessed automatically and are arranged so that the table
+// fits into stx.TextWidth.
 func (stx *TextSyntax) Table(rows ...[]string) string {
 	width := stx.TextWidth - (stx.indentLvl * stx.TabWidth)
 	//TODO(pirmd): introduce way to chose/define Table grid
-	table := text.DrawTable(width, " ", "-", " ", rows...)
+	table := text.NewTable().SetMaxWidth(width).SetGrid(" ", "-", " ").Rows(rows...).Draw()
 
 	return stx.br() + stx.tab(table, stx.indentLvl, "") + "\n"
 }
@@ -169,9 +169,12 @@ func (stx *TextSyntax) tab(s string, lvl int, tag string) string {
 		if stx.nestLvl > 0 {
 			width := stx.TextWidth - (stx.nestLvl-1)*stx.TabWidth
 			prefix = strings.Repeat(" ", (lvl-stx.nestLvl)*stx.TabWidth)
-			return text.Tab(s, tag, prefix, width)
+			return text.Tab(s, tag, prefix, width, false)
 		}
-		return text.Tab(s, tag, prefix, stx.TextWidth)
+
+		//Tab should not cut long "words", otherwise it might split links (that
+		//are seen as words) and void Markdown syntax
+		return text.Tab(s, tag, prefix, stx.TextWidth, false)
 	}
 	return text.Indent(s, tag, prefix)
 }

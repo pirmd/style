@@ -1,8 +1,9 @@
 package style_test
 
 import (
-	"github.com/pirmd/verify"
 	"testing"
+
+	"github.com/pirmd/verify"
 
 	"github.com/pirmd/style"
 )
@@ -96,34 +97,46 @@ func testText(st style.Styler) (s string) {
 
 func TestCoreSyntax(t *testing.T) {
 	out := testText(&style.CoreSyntax{})
-	verify.MatchGolden(t, out, "Styling with 'Core' style failed")
+	if failure := verify.MatchGolden(t.Name(), out); failure != nil {
+		t.Errorf("Styling with 'Core' style failed.\n%s", failure)
+	}
 }
 
 func TestPlainTextSyntax(t *testing.T) {
 	out := testText(style.NewPlaintext())
-	verify.MatchGolden(t, out, "Styling with 'Plaintext' style failed")
+	if failure := verify.MatchGolden(t.Name(), out); failure != nil {
+		t.Errorf("Styling with 'Plaintext' style failed.\n%s", failure)
+	}
 }
 
 func TestTermSyntax(t *testing.T) {
 	st := style.NewTerm()
 	st.TextWidth = 60 //Fix size for testing purpose otherwise, might have varying resluts
 	out := testText(st)
-	verify.MatchGolden(t, out, "Styling with 'Term' style failed")
+	if failure := verify.MatchGolden(t.Name(), out); failure != nil {
+		t.Errorf("Styling with 'Term' style failed.\n%s", failure)
+	}
 }
 
 func TestColorTermSyntax(t *testing.T) {
 	st := style.NewColorterm()
 	st.TextWidth = 60 //Fix size for testing purpose otherwise, might have varying resluts
 	out := testText(st)
-	verify.MatchGolden(t, out, "Styling with 'ColorTerm' style failed")
+	if failure := verify.MatchGolden(t.Name(), out); failure != nil {
+		t.Errorf("Styling with 'Colorterm' style failed.\n%s", failure)
+	}
 }
 
 func TestMarkdownSyntax(t *testing.T) {
 	out := testText(style.NewMarkdown())
-	verify.MatchGolden(t, out, "Styling with 'Markdown' style failed")
+	if failure := verify.MatchGolden(t.Name(), out); failure != nil {
+		t.Errorf("Styling with 'Markdown' style failed.\n%s", failure)
+	}
 }
 
 func TestManSyntax(t *testing.T) {
 	out := testText(style.NewMan())
-	verify.MatchGolden(t, out, "Styling with 'Man' style failed")
+	if failure := verify.MatchGolden(t.Name(), out); failure != nil {
+		t.Errorf("Styling with 'Man' style failed.\n%s", failure)
+	}
 }
