@@ -1,7 +1,6 @@
 package style
 
 import (
-	"github.com/pirmd/verify"
 	"testing"
 )
 
@@ -19,9 +18,13 @@ func TestMkdTextEscaping(t *testing.T) {
 
 	for _, tc := range testCases {
 		got := st.Escape(tc.in)
-		verify.EqualString(t, got, tc.out, "escape markdown: '%s'", tc.in)
+		if got != tc.out {
+			t.Errorf("escape markdown: '%s' failed. Want: %s. Got : %s", tc.in, tc.out, got)
+		}
 
 		gotgot := st.Escape(tc.in)
-		verify.EqualString(t, gotgot, tc.out, "escape markdown (second pass): '%s'", tc.in)
+		if gotgot != tc.out {
+			t.Errorf("escape markdown (second pass): '%s' failed. Want: %s. Got : %s", tc.in, tc.out, gotgot)
+		}
 	}
 }

@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 Format is based on [Keep a Changelog] (https://keepachangelog.com/en/1.0.0/).
 Versionning adheres to [Semantic Versioning] (https://semver.org/spec/v2.0.0.html)
 
-## [Unreleases]
+## [0.3.2] - 2020-02-22
+### Modified
+- Migrate to github.com/pirmd/text v0.5.1 and github.com/pirmd/verify v0.4.1
+
+## [0.3.1] - 2019-11-11
 ### Removed
 - separate style from rest of github.com/pirmd/cli repository
 - style/text becomes a standalone package

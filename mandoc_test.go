@@ -1,7 +1,6 @@
 package style
 
 import (
-	"github.com/pirmd/verify"
 	"testing"
 )
 
@@ -20,9 +19,13 @@ func TestMandocEscaping(t *testing.T) {
 
 	for _, tc := range testCases {
 		got := st.Escape(tc.in)
-		verify.EqualString(t, got, tc.out, "escape man (second pass): '%s'", tc.in)
+		if got != tc.out {
+			t.Errorf("escape man: '%s' failed. Want: %s. Got : %s", tc.in, tc.out, got)
+		}
 
 		gotgot := st.Escape(got)
-		verify.EqualString(t, gotgot, tc.out, "escape man (second pass): '%s'", got)
+		if gotgot != tc.out {
+			t.Errorf("escape man (second pass): '%s' failed. Want: %s. Got : %s", tc.in, tc.out, gotgot)
+		}
 	}
 }
