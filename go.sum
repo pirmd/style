@@ -12,10 +12,6 @@ github.com/pirmd/style v0.3.1/go.mod h1:h1p0xPt7IAJwf08x84VYK3i3VhzJUhqzuEf2ofe0
 github.com/pirmd/text v0.0.0-20191111165610-e9760a07aba4 h1:87kHcyMn0OfUxocFbEUnac5XNhfJiG3RfEoAa/3OQJE=
 github.com/pirmd/text v0.0.0-20191111165610-e9760a07aba4/go.mod h1:FBNvItiLIoO/jhO8dO35YtMt0wxxuIPBZnDKPxKh75U=
 github.com/pirmd/text v0.4.0/go.mod h1:4OlvjIEyYwpNYzjAgCyMX9I9kaWBU/HKdgITLQJW4uY=
-github.com/pirmd/text v0.4.1 h1:GgYx57+V/k1Diu4J2bhGjh4VNYv46YYcjuUzp+DWYKw=
-github.com/pirmd/text v0.4.1/go.mod h1:Okfp3RfUl/dyYmJpDU6ChXLawYI5H/hSfLSC3naYkBs=
-github.com/pirmd/text v0.5.0 h1:nmHATBK9kCtOiCD6xqEBsSKdped7Twg3yimStEog22w=
-github.com/pirmd/text v0.5.0/go.mod h1:hnz1evTCIMeXQfoGk9M4JAM1i/P2xqrVC6pLE5SLwag=
 github.com/pirmd/text v0.5.1 h1:fnPx15M0J5aNmQ+1Os1JHFkzOC+/bDM81CuPzXN+FDY=
 github.com/pirmd/text v0.5.1/go.mod h1:hnz1evTCIMeXQfoGk9M4JAM1i/P2xqrVC6pLE5SLwag=
 github.com/pirmd/verify v0.2.0 h1:woyyRGbgZp4SnWGsMco3BCVwTfomkFZl/+xRKiGZ5FM=
