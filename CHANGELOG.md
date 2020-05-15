@@ -1,12 +1,8 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-Format is based on [Keep a Changelog] (https://keepachangelog.com/en/1.0.0/).
-Versionning adheres to [Semantic Versioning] (https://semver.org/spec/v2.0.0.html)
-
-## [Unrelease]
+## [O.4.O] - 2020.05.15
 ## Added
-- add a Funcmap function thta genrates ready to use funcmap to use in text/template.
+- add a Funcmap function that generates ready to use funcmap to use in text/template.
 
 ## [0.3.2] - 2020-02-22
 ### Modified
